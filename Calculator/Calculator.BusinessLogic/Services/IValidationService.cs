@@ -7,5 +7,7 @@ namespace Calculator.BusinessLogic.Services
     public interface IValidationService
     {
         bool validate(double number);
+
+        public List<string> Errors { get; }
     }
 }

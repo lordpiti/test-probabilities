@@ -13,9 +13,10 @@ namespace Calculator.BusinessLogic.Tests
         private Mock<IExpression> _expressionMock;
         private Mock<IOperationBuilder> _operationBuilderMock;
         private Mock<ILoggerService> _writerMock;
+        private Mock<IValidationService> _validationService;
 
         [Fact]
-        public void Test1()
+        public void ValidInputs_Either_ReturnsCorrectResult()
         {
             // Arrange
             var expectedResult = 0.75;
@@ -35,7 +36,7 @@ namespace Calculator.BusinessLogic.Tests
         }
 
         [Fact]
-        public void Test2()
+        public void ValidInputs_CombinedWith_ReturnsCorrectResult()
         {
             // Arrange
             var expectedResult = 0.25;
@@ -66,7 +67,10 @@ namespace Calculator.BusinessLogic.Tests
             _writerMock = new Mock<ILoggerService>();
             _writerMock.Setup(x => x.WriteLine(It.IsAny<DateTime>(), It.IsAny<string>(), It.IsAny<string>()));
 
-            _calculatorService = new CalculatorService(_operationBuilderMock.Object, _writerMock.Object);
+            _validationService = new Mock<IValidationService>();
+            _validationService.Setup(x => x.validate(It.IsAny<double>())).Returns(true);
+
+            _calculatorService = new CalculatorService(_operationBuilderMock.Object, _writerMock.Object, _validationService.Object);
         }
     }
 }

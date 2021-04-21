@@ -29,6 +29,7 @@ namespace Calculator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IValidationService, ValidationService>();
             services.AddScoped<IOperationBuilder, OperationBuilder>();
             services.AddScoped<ILoggerService, LoggerService>();
             services.AddScoped<ICalculatorService, CalculatorService>();

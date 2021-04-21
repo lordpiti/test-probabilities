@@ -2,7 +2,6 @@
 using Calculator.BusinessLogic.Models;
 using Calculator.BusinessLogic.Services;
 using System;
-using System.IO;
 
 namespace Calculator.BusinessLogic
 {

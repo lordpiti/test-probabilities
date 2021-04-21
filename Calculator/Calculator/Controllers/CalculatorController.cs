@@ -1,5 +1,6 @@
 ﻿using Calculator.BusinessLogic;
 using Calculator.BusinessLogic.Builders;
+using Calculator.BusinessLogic.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -17,7 +18,7 @@ namespace Calculator.Controllers
         {
             _logger = logger;
             _operationBuilder = operationBuilder;
-            _calculatorService = calculatorService; ;
+            _calculatorService = calculatorService;
         }
 
         [HttpGet]

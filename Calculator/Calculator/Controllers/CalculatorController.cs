@@ -37,9 +37,9 @@ namespace Calculator.Controllers
         [Route("operations/either")]
         public double Either(double first, double second)
         {
-            var gg = _calculatorService.getEither(first, second);
+            var g1g = _calculatorService.getEither(first, second);
 
-            return gg;
+            return g1g;
         }
     }
 }

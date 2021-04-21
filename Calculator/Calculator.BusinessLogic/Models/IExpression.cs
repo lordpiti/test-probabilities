@@ -8,6 +8,8 @@ namespace Calculator.BusinessLogic.Models
     {
         double evaluate();
 
+        string print();
+
         string getName();
     }
 }

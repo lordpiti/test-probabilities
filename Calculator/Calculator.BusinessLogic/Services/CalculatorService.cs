@@ -1,4 +1,6 @@
 ﻿using Calculator.BusinessLogic.Builders;
+using Calculator.BusinessLogic.Models;
+using Calculator.BusinessLogic.Services;
 using System;
 using System.IO;
 
@@ -7,26 +9,28 @@ namespace Calculator.BusinessLogic
     public class CalculatorService : ICalculatorService
     {
         private readonly IOperationBuilder _operationBuilder;
+        private readonly ILoggerService _loggerService;
 
-        public CalculatorService(IOperationBuilder operationBuilder)
+        public CalculatorService(IOperationBuilder operationBuilder, ILoggerService loggerService)
         {
             _operationBuilder = operationBuilder;
+            _loggerService = loggerService;
         }
 
         public double getEither(double first, double second)
         {
-            var expression = _operationBuilder.BuildEither(first, second);
-
-            // var gg = Assembly.GetExecutingAssembly().Location;
-            //var gg = Path.GetDirectoryName(Assembly.GetExecutingAssembly().CodeBase);
-
-
-            //File.AppendAllText(@"c:\Repos\file.txt", "text content" + Environment.NewLine);
+            var expression = _operationBuilder.BuildBinary<EitherExpression>(first, second);
             var result = expression.evaluate();
+            _loggerService.WriteLine(DateTime.Now, expression.print(), result.ToString());
 
-            var gg = System.AppDomain.CurrentDomain.BaseDirectory;
+            return result;
+        }
 
-            File.AppendAllText($"{gg}file.txt", $"{expression.getName()} - a:{first}, b: {second}, result:{result}{Environment.NewLine}");
+        public double getCombinedWith(double first, double second)
+        {
+            var expression = _operationBuilder.BuildBinary<CombinedWithExpression>(first, second);
+            var result = expression.evaluate();
+            _loggerService.WriteLine(DateTime.Now, expression.print(), result.ToString());
 
             return result;
         }

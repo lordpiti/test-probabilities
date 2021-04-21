@@ -22,6 +22,13 @@ namespace Calculator.BusinessLogic.Models
 
         abstract protected double evaluate(double left, double right);
 
+        public string print()
+        {
+            return print(left.print(), right.print());
+        }
+
+        abstract protected string print(string left, string right);
+
         abstract public string getName();
     }
 }

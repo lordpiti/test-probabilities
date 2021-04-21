@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Calculator.BusinessLogic.Models
+﻿namespace Calculator.BusinessLogic.Models
 {
     public class SubstractionExpression : BinaryExpression
     {
@@ -14,6 +10,11 @@ namespace Calculator.BusinessLogic.Models
         protected override double evaluate(double left, double right)
         {
             return left - right;
+        }
+
+        protected override string print(string left, string right)
+        {
+            return left + "-" + right;
         }
 
         public override string getName() => "Substraction";

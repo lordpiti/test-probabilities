@@ -16,6 +16,11 @@ namespace Calculator.BusinessLogic.Models
             return left + right;
         }
 
+        protected override string print(string left, string right)
+        {
+            return left + " + " + right;
+        }
+
         public override string getName() => "Addition";
     }
 }

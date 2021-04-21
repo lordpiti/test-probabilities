@@ -1,5 +1,6 @@
 using Calculator.BusinessLogic;
 using Calculator.BusinessLogic.Builders;
+using Calculator.BusinessLogic.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,7 @@ namespace Calculator
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IOperationBuilder, OperationBuilder>();
+            services.AddScoped<ILoggerService, LoggerService>();
             services.AddScoped<ICalculatorService, CalculatorService>();
             services.AddControllers();
             AddSwagger(services);

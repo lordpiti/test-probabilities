@@ -7,8 +7,6 @@ namespace Calculator.BusinessLogic.Builders
 {
     public interface IOperationBuilder
     {
-        IExpression BuildCombinedWith(double left, double right);
-
-        IExpression BuildEither(double left, double right);
+        IExpression BuildBinary<T>(double left, double right) where T : BinaryExpression;
     }
 }

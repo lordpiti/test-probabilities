@@ -1,21 +1,13 @@
 ﻿using Calculator.BusinessLogic.Models;
+using System;
 
 namespace Calculator.BusinessLogic.Builders
 {
     public class OperationBuilder : IOperationBuilder
     {
-        public IExpression BuildCombinedWith(double left, double right)
+        public IExpression BuildBinary<T>(double left, double right) where T: BinaryExpression
         {
-            return new CombinedWithExpression(new NumberExpression(left), new NumberExpression(right));
-        }
-
-        public IExpression BuildEither(double left, double right)
-        {
-            //return new SubstractionExpression(new AdditionExpression(
-            //    new NumberExpression(left),
-            //    new NumberExpression(right)
-            //    ), this.BuildCombinedWith(left, right));
-            return new EitherExpression(new NumberExpression(left), new NumberExpression(right));
+            return (T)Activator.CreateInstance(typeof(T), new NumberExpression(left), new NumberExpression(right));
         }
     }
 }

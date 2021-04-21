@@ -18,6 +18,11 @@ namespace Calculator.BusinessLogic.Models
             return (double)number;
         }
 
+        public string print()
+        {
+            return number.ToString();
+        }
+
         public string getName() => "Number";
     }
 }

@@ -1,9 +1,7 @@
 ﻿using Calculator.BusinessLogic;
 using Calculator.BusinessLogic.Builders;
-using Calculator.BusinessLogic.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.IO;
 
 namespace Calculator.Controllers
 {
@@ -26,20 +24,18 @@ namespace Calculator.Controllers
         [Route("operations/combinedWith")]
         public double CombinedWith(double first, double second)
         {
-            var expression = _operationBuilder.BuildCombinedWith(first, second);
+            var result = _calculatorService.getCombinedWith(first, second);
 
-            var gg = expression.evaluate();
-
-            return gg;
+            return result;
         }
 
         [HttpGet]
         [Route("operations/either")]
         public double Either(double first, double second)
         {
-            var g1g = _calculatorService.getEither(first, second);
+            var result = _calculatorService.getEither(first, second);
 
-            return g1g;
+            return result;
         }
     }
 }

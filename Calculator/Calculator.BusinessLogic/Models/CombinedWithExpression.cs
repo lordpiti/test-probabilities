@@ -12,6 +12,11 @@
             return left * right;
         }
 
+        protected override string print(string left, string right)
+        {
+            return "CombinedWith(" + left + "," + right + ")";
+        }
+
         public override string getName() => "CombinedWith";
     }
 

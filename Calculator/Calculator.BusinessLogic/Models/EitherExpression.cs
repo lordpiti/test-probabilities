@@ -17,6 +17,11 @@
             return eitherExpression.evaluate();
         }
 
+        protected override string print(string left, string right)
+        {
+            return "Either("+left + "," + right+")";
+        }
+
         public override string getName() => "Either";
     }
 }

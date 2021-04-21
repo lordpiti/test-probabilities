@@ -7,5 +7,7 @@ namespace Calculator.BusinessLogic
     public interface ICalculatorService
     {
         double getEither(double first, double second);
+
+        double getCombinedWith(double first, double second);
     }
 }

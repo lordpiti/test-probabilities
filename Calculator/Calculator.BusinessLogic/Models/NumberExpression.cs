@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Calculator.BusinessLogic.Models
 {
+    /// <summary>
+    /// Represents a number, which would be the most elemental expression. A leaf on an expression tree
+    /// </summary>
     public class NumberExpression : IExpression
     {
         private double number;
@@ -15,7 +18,7 @@ namespace Calculator.BusinessLogic.Models
 
         public double evaluate()
         {
-            return (double)number;
+            return number;
         }
 
         public string print()

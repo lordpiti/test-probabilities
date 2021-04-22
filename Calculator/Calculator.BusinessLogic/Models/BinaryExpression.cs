@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Calculator.BusinessLogic.Models
 {
+    /// <summary>
+    /// Represents any binary expression with two element to perform an operation with
+    /// </summary>
     public abstract class BinaryExpression : IExpression
     {
         private IExpression left;

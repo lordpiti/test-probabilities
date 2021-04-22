@@ -6,6 +6,9 @@ using System;
 
 namespace Calculator.BusinessLogic
 {
+    /// <summary>
+    /// Concrete implementation on the calculator using the Expression hyerarchy model
+    /// </summary>
     public class CalculatorService : ICalculatorService
     {
         private readonly IOperationBuilder _operationBuilder;
@@ -21,6 +24,7 @@ namespace Calculator.BusinessLogic
 
         public double getEither(double first, double second)
         {
+            // Validate the inputs
             var firstValid = _validationService.validate(first);
             var secondValid = _validationService.validate(second);
 
@@ -29,8 +33,11 @@ namespace Calculator.BusinessLogic
                 throw new ValidationException(_validationService.Errors);
             }
 
+            //Creates the expression object from the given parameters and evaluates its result
             var expression = _operationBuilder.BuildBinary<EitherExpression>(first, second);
             var result = expression.evaluate();
+
+            // Logs the calculation performed along with the date and the output result
             _loggerService.WriteLine(DateTime.Now, expression.print(), result.ToString());
 
             return result;
@@ -38,6 +45,7 @@ namespace Calculator.BusinessLogic
 
         public double getCombinedWith(double first, double second)
         {
+            // Validate the inputs
             var firstValid = _validationService.validate(first);
             var secondValid = _validationService.validate(second);
 
@@ -46,8 +54,11 @@ namespace Calculator.BusinessLogic
                 throw new ValidationException(_validationService.Errors);
             }
 
+            //Creates the expression object from the given parameters and evaluates its result
             var expression = _operationBuilder.BuildBinary<CombinedWithExpression>(first, second);
             var result = expression.evaluate();
+
+            // Logs the calculation performed along with the date and the output result
             _loggerService.WriteLine(DateTime.Now, expression.print(), result.ToString());
 
             return result;

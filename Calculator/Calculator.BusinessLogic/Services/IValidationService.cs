@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Calculator.BusinessLogic.Services
 {
+    /// <summary>
+    /// Represents a validation service which also stores a list of validation errors
+    /// </summary>
     public interface IValidationService
     {
         bool validate(double number);

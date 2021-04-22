@@ -28,6 +28,9 @@ namespace Calculator
             services.AddScoped<IOperationBuilder, OperationBuilder>();
             services.AddScoped<ILoggerService, LoggerService>();
             services.AddScoped<ICalculatorService, CalculatorService>();
+
+            services.Configure<AppSettings>(options => Configuration.GetSection("AppSettings").Bind(options));
+
             services.AddControllers();
             AddSwagger(services);
         }

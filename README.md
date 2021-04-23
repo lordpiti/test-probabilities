@@ -7,3 +7,5 @@ The path for the file with the output can be set on the appsettings config file 
 Implementation of the calculator has been done probably in an over architected way but just to prove the use of some common OO design patterns and make it all reusable and extensible. 
 
 More extensive unit/integration tests could have been created but I believe the ones I added are enough to prove the idea.
+
+No additional logging has been added as it was not the purpose of the exercise, but the app is ready to introduce any at anytime.
